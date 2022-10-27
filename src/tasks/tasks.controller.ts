@@ -2,27 +2,27 @@ import { Body, Controller, Delete, Get, Param, Post, Put, Query } from '@nestjs/
 import { CreateTaskDTO } from './dto/create-task.dto';
 import { GetTaskDTO } from './dto/get-task.dto';
 import { UpdateTaskStatusDTO } from './dto/update-task-status.dto';
-import { Task, TaskStaus } from './task.model';
+import { Task } from './task.model';
 import { TasksService } from './tasks.service';
 
 @Controller('tasks')
 export class TasksController {
     constructor(private tasksService: TasksService) { }
     @Get()
-    getTasks(@Query() filterDto: GetTaskDTO): Task[] {
+    getTasks(@Query() filterDto: GetTaskDTO): Task[] {//we dont use dtos here coz user can send in req more data but wont save in db
         if (Object.keys(filterDto).length > 0) {
             return this.tasksService.getasksWithFilter(filterDto)
         }
         else {
-            return this.tasksService.getTasks()
+            this.tasksService.getTasks()
         }
     }
     @Post()
     // createTask(@Body() body):Task{
     //     return this.tasksService.createTask(body.title,body.description)
     // }
-    createTask(@Body() CreateTaskDTO: CreateTaskDTO): Task {//@Body('title') title:string,@Body('description') description:string
-        return this.tasksService.createTask(CreateTaskDTO)
+    createTask(@Body() CreateTaskDTO: CreateTaskDTO) {//@Body('title') title:string,@Body('description') description:string
+        this.tasksService.createTask(CreateTaskDTO)
     }
     @Get('/:id')
     getTaskById(@Param('id') id: string): Task {

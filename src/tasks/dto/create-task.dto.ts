@@ -5,4 +5,6 @@ export class CreateTaskDTO {
     title: string;
     @IsNotEmpty()
     description: string;
+    // @IsNotEmpty()
+    // createdAt: Date;
 }
