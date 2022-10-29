@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TasksModule } from './tasks/tasks.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Task } from './tasks/task.entity'
+import { Task } from './entities/task.entity'
 @Module({
   imports: [TasksModule,
     TypeOrmModule.forRoot({
