@@ -2,8 +2,9 @@ import { Body, Controller, Delete, Get, Param, Post, Put, Query } from '@nestjs/
 import { CreateTaskDTO } from './dto/create-task.dto';
 import { GetTaskDTO } from './dto/get-task.dto';
 import { UpdateTaskStatusDTO } from './dto/update-task-status.dto';
-import { Task } from './utils/task.model';
+import { Task } from '../utils/task.model';
 import { TasksService } from './tasks.service';
+import { CreateUserProfile } from '../utils/user.types';
 
 @Controller('tasks')
 export class TasksController {
@@ -31,4 +32,5 @@ export class TasksController {
     async updateTask(@Param('id') id: string, @Body() UpdateTaskStatusDTO: UpdateTaskStatusDTO) {
         await this.tasksService.updateTask(id, UpdateTaskStatusDTO)
     }
+
 }

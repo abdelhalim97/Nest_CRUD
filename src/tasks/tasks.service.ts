@@ -1,14 +1,17 @@
-import { Injectable } from '@nestjs/common';
-import { UpdateTask } from './utils/task.model';//Task,
-import { v4 as uuid } from 'uuid';
+import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
+import { UpdateTask } from '../utils/task.model';
 import { CreateTaskDTO } from './dto/create-task.dto';
-import { GetTaskDTO } from './dto/get-task.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Task } from '../entities/task.entity';
 import { Repository } from 'typeorm';
+import { CreateUserProfile } from '../utils/user.types';
+import { User } from 'src/entities/User.entity';
+import { Profile } from 'src/entities/profile.entity';
 @Injectable()
 export class TasksService {
-    constructor(@InjectRepository(Task) private taskRepository: Repository<Task>) { }
+    constructor(@InjectRepository(Task) private taskRepository: Repository<Task>,
+        @InjectRepository(User) private userRepository: Repository<User>,
+        @InjectRepository(Profile) private profileRepository: Repository<Profile>) { }
 
     getTasks = () => this.taskRepository.find()
 
@@ -25,4 +28,5 @@ export class TasksService {
     updateTask = (id: string, updateTaskDetails: UpdateTask) => {
         return this.taskRepository.update({ id }, { ...updateTaskDetails })
     }
+
 }

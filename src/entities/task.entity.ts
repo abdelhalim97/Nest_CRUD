@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm'
-import { TaskStatus } from '../tasks/utils/task.model'
+import { TaskStatus } from '../utils/task.model'
 @Entity({ name: 'tasks' })
 export class Task {
     @PrimaryGeneratedColumn('uuid')
