@@ -6,8 +6,5 @@ import { ProfilesService } from './profiles.service';
 export class ProfilesController {
     constructor(private profilesService: ProfilesService) { }
     //realtionship oneToOne
-    @Post(':id/profiles')
-    async createUserProfile(@Param('id') id: string, @Body() createUserProfile: CreateUserProfile) {
-        await this.profilesService.createUserProfile(id, createUserProfile)
-    }
+
 }

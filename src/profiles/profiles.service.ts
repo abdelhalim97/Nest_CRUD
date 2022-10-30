@@ -11,12 +11,5 @@ export class ProfilesService {
         @InjectRepository(User) private userRepository: Repository<User>,
         @InjectRepository(Profile) private profileRepository: Repository<Profile>) { }
 
-    createUserProfile = async (id: string, CreateUserProfile: CreateUserProfile) => {
-        const user = await this.userRepository.findOneBy({ id })
-        if (!user) throw new HttpException("user not found", HttpStatus.BAD_REQUEST);
-        const newProfile = this.profileRepository.create(CreateUserProfile)
-        const savedProfile = await this.profileRepository.save(newProfile)
-        user.profile = savedProfile
-        return this.userRepository.save(user)
-    }
+
 }

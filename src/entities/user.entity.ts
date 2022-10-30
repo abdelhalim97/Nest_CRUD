@@ -1,8 +1,7 @@
 import { Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Profile } from "./profile.entity";
-import { Task } from "./task.entity";
 
-@Entity({ name: 'users' })
+@Entity()
 export class User {
     @PrimaryGeneratedColumn('uuid')
     id: string
@@ -10,7 +9,8 @@ export class User {
     email: string
     @Column()
     password: string
-    @OneToOne(() => Profile)
+    @OneToOne(() => Profile, { cascade: true })
     @JoinColumn()
-    profile: Profile
+    profile: Profile;
+    //
 }

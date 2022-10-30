@@ -1,7 +1,7 @@
-import { Column, Entity, PrimaryColumn } from "typeorm";
-@Entity({ name: 'profiles' })
+import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+@Entity()
 export class Profile {
-    @PrimaryColumn('uuid')
+    @PrimaryGeneratedColumn('uuid')
     id: string
     @Column()
     age: number
