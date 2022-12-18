@@ -4,14 +4,14 @@ import { CreateTaskDTO } from './dto/create-task.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Task } from '../entities/task.entity';
 import { Repository } from 'typeorm';
-import { CreateUserProfile } from '../utils/user.types';
+import { CreateUserProduct } from '../utils/user.types';
 import { User } from 'src/entities/User.entity';
-import { Profile } from 'src/entities/profile.entity';
+import { Product } from 'src/entities/product.entity';
 @Injectable()
 export class TasksService {
     constructor(@InjectRepository(Task) private taskRepository: Repository<Task>,
         @InjectRepository(User) private userRepository: Repository<User>,
-        @InjectRepository(Profile) private profileRepository: Repository<Profile>) { }
+        @InjectRepository(Product) private profileRepository: Repository<Product>) { }
 
     getTasks = () => this.taskRepository.find()
 

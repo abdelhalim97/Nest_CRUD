@@ -4,7 +4,7 @@ import { GetTaskDTO } from './dto/get-task.dto';
 import { UpdateTaskStatusDTO } from './dto/update-task-status.dto';
 import { Task } from '../utils/task.model';
 import { TasksService } from './tasks.service';
-import { CreateUserProfile } from '../utils/user.types';
+import { CreateUserProduct } from '../utils/user.types';
 
 @Controller('tasks')
 export class TasksController {

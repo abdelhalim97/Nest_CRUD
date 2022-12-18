@@ -1,7 +1,7 @@
 
-export type CreateUserProfile = {
+export type CreateUserProduct = {
     id: string
-    age: number;
+    quantity: number;
 }
 export type CreateUser = {
     email: string

@@ -1,15 +1,15 @@
 import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Profile } from 'src/entities/profile.entity';
+import { Product } from 'src/entities/product.entity';
 import { User } from 'src/entities/User.entity';
-import { CreateUserProfile } from 'src/utils/user.types';
+import { CreateUserProduct } from 'src/utils/user.types';
 import { Repository } from 'typeorm';
 
 @Injectable()
-export class ProfilesService {
+export class ProductsService {
     constructor(
         @InjectRepository(User) private userRepository: Repository<User>,
-        @InjectRepository(Profile) private profileRepository: Repository<Profile>) { }
+        @InjectRepository(Product) private productRepository: Repository<Product>) { }
 
 
 }

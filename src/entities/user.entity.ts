@@ -1,5 +1,5 @@
 import { Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
-import { Profile } from "./profile.entity";
+import { Product } from "./product.entity";
 
 @Entity()
 export class User {
@@ -9,8 +9,8 @@ export class User {
     email: string
     @Column()
     password: string
-    @OneToOne(() => Profile, { cascade: true })
+    @OneToOne(() => Product, { cascade: true })
     @JoinColumn()
-    profile: Profile;
+    product: Product;
     //
 }
