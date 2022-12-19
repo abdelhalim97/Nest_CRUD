@@ -8,6 +8,7 @@ export class ProductsController {
     @Post('/create')
     @UseGuards(AuthGuard())
     async createProduct(@Req() req, @Body() createProduct: CreateProductDto,) {
+        console.log('test');
         return await this.productsService.createProduct(req.user, createProduct)
     }
     @Post('/:id/buy')

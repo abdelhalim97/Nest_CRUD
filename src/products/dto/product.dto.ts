@@ -6,6 +6,10 @@ export class BuyProductDto {
 }
 export class CreateProductDto {
     @IsString()
+    id: string;
+    @IsString()
+    base64: string;
+    @IsString()
     name: string;
     @IsNumber()
     quantity: number;

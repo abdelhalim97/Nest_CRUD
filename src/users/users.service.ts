@@ -32,7 +32,8 @@ export class UsersService {
         if (!hashedPAss) throw new HttpException('wrong_password', HttpStatus.UNAUTHORIZED)
         const payload = user.id
         const token: string = await this.jwtService.sign({ payload })
-        return token
+        console.log({ token });
+        return { token }
     }
     users = async () => {
         const users = await this.userRepository.find()

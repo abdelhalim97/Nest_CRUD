@@ -19,7 +19,6 @@ export class ProductsService {
         return savedProduct
     }
     buyProduct = async (id: string, BuyProduct: BuyProductDto) => {
-        const user = await this.userRepository.findOneBy({ id })
         const product = await this.productRepository.findOneBy({ id })
         if (!product) throw new HttpException("product not found", HttpStatus.NOT_FOUND);
         const { quantity } = BuyProduct
@@ -30,6 +29,7 @@ export class ProductsService {
     }
     products = async () => {
         const products = await this.productRepository.find()
+        console.log(products);
         return products
     }
     deleteProducts = async () => {

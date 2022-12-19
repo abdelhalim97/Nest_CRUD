@@ -11,7 +11,7 @@ export class UsersController {
     async signup(@Body() userParams: createUser) {
         await this.usersService.signup(userParams)
     }
-    @Get('/signin')
+    @Post('/signin')
     async signin(@Body() signin: signinDto) {
         return await this.usersService.signin(signin)
     }
