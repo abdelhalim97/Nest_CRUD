@@ -1,8 +1,17 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { IsNumber, IsString } from "class-validator";
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { User } from "./User.entity";
 @Entity()
 export class Product {
     @PrimaryGeneratedColumn('uuid')
     id: string
     @Column()
+    @IsString()
+    name: string
+    @Column()
+    @IsNumber()
     quantity: number
+    @ManyToOne(() => User, (user) => user.products, { cascade: true })
+    @JoinColumn()
+    user: User
 }

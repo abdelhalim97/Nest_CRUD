@@ -1,9 +1,9 @@
-
-export type CreateUserProduct = {
-    id: string
-    quantity: number;
-}
-export type CreateUser = {
+export type SignupUser = {
+    username: string
     email: string
     password: string;
+}
+export enum UserRole {
+    ADMIN = "admin",
+    USER = "user",
 }

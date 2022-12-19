@@ -1,17 +1,26 @@
-import { Controller, Post, Body, Param } from '@nestjs/common';
+import { Controller, Post, Body, Param, Delete } from '@nestjs/common';
+import { Get } from '@nestjs/common/decorators/http/request-mapping.decorator';
 import { createUser } from 'src/tasks/dto/create-user.dto';
-import { CreateUserProduct } from 'src/utils/user.types';
+import { signinDto } from './dto/signin.dto';
 import { UsersService } from './users.service';
 
 @Controller('users')
 export class UsersController {
     constructor(private usersService: UsersService) { }
-    @Post()
-    async createUser(@Body() userParams: createUser) {
-        this.usersService.createUser(userParams)
+    @Post('/signup')
+    async signup(@Body() userParams: createUser) {
+        await this.usersService.signup(userParams)
     }
-    @Post(':id/product')
-    CreateUserProduct(@Param('id') id: string, @Body() createUserProduct: CreateUserProduct) {
-        this.usersService.createUserProduct(id, createUserProduct)
+    @Get('/signin')
+    async signin(@Body() signin: signinDto) {
+        return await this.usersService.signin(signin)
+    }
+    @Get()
+    async users() {
+        return await this.usersService.users()
+    }
+    @Delete('/:id')
+    async deleteUser(@Param('id') id: string) {
+        return await this.usersService.deleteUser(id)
     }
 }
