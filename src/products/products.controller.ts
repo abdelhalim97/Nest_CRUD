@@ -1,5 +1,5 @@
 import { Controller, Post, Param, Body, UseGuards, Req, Get, Delete } from '@nestjs/common';
-import { BuyProductDto, CreateProductDto } from './dto/product.dto';
+import { AddProductDto, BuyProductDto, CreateProductDto } from './dto/product.dto';
 import { ProductsService } from './products.service';
 import { AuthGuard } from '@nestjs/passport'
 @Controller('products')
@@ -16,9 +16,18 @@ export class ProductsController {
     async buyProduct(@Param('id') id: string, @Body() buyProduct: BuyProductDto) {
         await this.productsService.buyProduct(id, buyProduct)
     }
+    @Post('/:id/add')
+    @UseGuards(AuthGuard())
+    async addProduct(@Param('id') id: string, @Body() buyProduct: AddProductDto) {
+        await this.productsService.addProduct(id, buyProduct)
+    }
     @Get()
     async products() {
         return await this.productsService.products()
+    }
+    @Get('/:id')
+    async product(@Param('id') id: string) {
+        return await this.productsService.product(id)
     }
     @Delete()
     async deleteProducts() {

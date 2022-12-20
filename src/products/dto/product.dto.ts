@@ -4,6 +4,10 @@ export class BuyProductDto {
     @IsNumber()
     quantity: number;
 }
+export class AddProductDto {
+    @IsNumber()
+    quantity: number;
+}
 export class CreateProductDto {
     @IsString()
     id: string;

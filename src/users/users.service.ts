@@ -33,7 +33,7 @@ export class UsersService {
         const payload = user.id
         const token: string = await this.jwtService.sign({ payload })
         console.log({ token });
-        return { token }
+        return { token, role: user.role }
     }
     users = async () => {
         const users = await this.userRepository.find()

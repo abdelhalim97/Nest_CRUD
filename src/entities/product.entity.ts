@@ -5,7 +5,7 @@ import { User } from "./User.entity";
 export class Product {
     @PrimaryColumn('uuid')
     id: string
-    @Column()
+    @Column("text")
     @IsString()
     base64: string
     @Column()
